@@ -7,8 +7,8 @@ from haystack.evaluation.eval_utils import (
     convert_dict_to_objects,
     convert_objects_to_dict,
     flatten_list,
-    get_grouped_values,
-    group_values,
+    retrieve_grouped_values,
+    create_grouped_values,
 )
 from haystack.evaluation.metrics import Metric, MetricsResult
 from haystack.lazy_imports import LazyImport
@@ -44,16 +44,16 @@ class EvaluationResult:
         self.outputs = outputs
         self.expected_outputs = expected_outputs
 
-        self.grouped_outputs = group_values(self.outputs)
-        self.grouped_expected_outputs = group_values(self.expected_outputs)
+        # self.grouped_outputs = group_values(self.outputs)
+        # self.grouped_expected_outputs = group_values(self.expected_outputs)
 
-        self.preds = get_grouped_values(self.grouped_outputs, "replies")
-        self.labels = get_grouped_values(self.grouped_expected_outputs, "replies")
+        # self.preds = get_grouped_values(self.grouped_outputs, "replies")
+        # self.labels = get_grouped_values(self.grouped_expected_outputs, "replies")
 
-        if isinstance(self.preds, list) is isinstance(self.labels, list):
-            self.preds = np.array(list(flatten_list(self.preds)))
-            self.labels = np.array(list(flatten_list(self.labels)))
-        assert isinstance(self.preds, np.ndarray) is isinstance(self.labels, np.ndarray)
+        # if isinstance(self.preds, list) is isinstance(self.labels, list):
+        #     self.preds = np.array(list(flatten_list(self.preds)))
+        #     self.labels = np.array(list(flatten_list(self.labels)))
+        # assert isinstance(self.preds, np.ndarray) is isinstance(self.labels, np.ndarray)
 
     def serialize(self) -> bytes:
         """

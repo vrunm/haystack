@@ -62,7 +62,7 @@ def convert_dict_to_objects(data: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     return unpacked_data
 
 
-def group_values(data: Dict[str, Any]):
+def create_grouped_values(data: Dict[str, Any]):
     """
     Groups values from a list of dictionaries containing nested dictionaries.
     Used to unpack the results from the outputs generated from a Component or Pipeline.
@@ -89,7 +89,7 @@ def group_values(data: Dict[str, Any]):
     return grouped_data
 
 
-def get_grouped_values(grouped_data: Dict[str, Any], key_to_find: str) -> Union[List[Any], None]:
+def retrieve_grouped_values(grouped_data: Dict[str, Any], key_to_find: str) -> Union[List[Any], None]:
     """
     Retrieves the values associated with a given key from grouped data.
 
@@ -102,7 +102,6 @@ def get_grouped_values(grouped_data: Dict[str, Any], key_to_find: str) -> Union[
     if key_to_find in grouped_data:
         return grouped_data[key_to_find]
     return None
-
 
 def flatten_list(nested_list: List[Any]) -> Generator[List[Any], List[Any], None]:
     """
